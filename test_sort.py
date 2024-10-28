@@ -11,6 +11,7 @@ def driver():
     yield driver
     driver.quit()
 
+#kiểm tra sắp xếp theo tên từ z-a
 def test_sort_name_z_a(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -26,6 +27,7 @@ def test_sort_name_z_a(driver):
     product_names = [product.text for product in products]
     assert product_names == sorted(product_names, reverse=True)
 
+#kiểm tra sắp xếp theo tên từ a-z
 def test_sort_name_a_z(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -41,6 +43,7 @@ def test_sort_name_a_z(driver):
     product_names = [product.text for product in products]
     assert product_names == sorted(product_names)
 
+#kiểm tra sắp xếp theo giá cao đến thấp
 def test_sort_price_high_low(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -56,6 +59,7 @@ def test_sort_price_high_low(driver):
     print(f"{prices} and {sorted(prices,reverse=True)}")
     assert prices==sorted(prices,reverse=True),f"Giá không được sắp xếp đúng: {prices}"
 
+#kiểm tra sắp xếp theo giá thấp đến cao
 def test_sort_price_low_high(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")

@@ -11,6 +11,7 @@ def driver():
     yield driver
     driver.quit()
 
+#kiểm tra dữ liệu tổng tiền có đúng không - một sản phẩm
 def test_data_check_out_product(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -42,6 +43,7 @@ def test_data_check_out_product(driver):
     print(final_total)
     assert final_total == total, f"Tổng số tiền không chính xác: {final_total} (mong đợi: {total})"
 
+#kiểm tra dữ liệu tổng tiền có đúng không - nhiều sản phẩm
 def test_data_check_out_products(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")

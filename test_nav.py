@@ -11,7 +11,9 @@ def driver():
     yield driver
     driver.quit()
 
+#kiểm tra các liên kết bị hỏng 
 def test_nav(driver):
+    #truy cập trang và đăng nhập
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
     username.send_keys("standard_user")
@@ -19,14 +21,17 @@ def test_nav(driver):
     password.send_keys("secret_sauce")
     driver.find_element(By.ID,"login-button").click()
     time.sleep(3)
+    #tìm hết các phần tử có tag là a 
     links = driver.find_elements(By.TAG_NAME, "a")
     original_window = driver.current_window_handle
-
+    #vòng lặp qua links tìm thuộc tính href
     for link in links:
         href = link.get_attribute("href")
         if not href or "#" in href:
             continue
+        #mở một tab mới với href được truyền vào
         driver.execute_script("window.open(arguments[0]);", href)
+        #chuyển trang cuối cùng
         driver.switch_to.window(driver.window_handles[-1])
         try:
             driver.get(href)

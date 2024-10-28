@@ -10,6 +10,7 @@ def driver():
     yield driver
     driver.quit()
 
+#kiểm tra việc gửi đơn đăng ký
 def test_form_submit(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -21,6 +22,7 @@ def test_form_submit(driver):
     link="https://www.saucedemo.com/inventory.html"
     assert link in driver.current_url
 
+#kiểm tra việc gửi đơn thất bại
 def test_form_submit_failed(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -31,6 +33,7 @@ def test_form_submit_failed(driver):
     error_mess=driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3").text
     assert "Epic sadface: Username and password do not match any user in this service" in error_mess
 
+#kiểm tra gửi đơn với người dùng bị khóa 
 def test_form_submit_locked(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -41,6 +44,7 @@ def test_form_submit_locked(driver):
     error_mess=driver.find_element(By.XPATH,"//*[@id='login_button_container']/div/form/div[3]/h3").text
     assert "Epic sadface: Sorry, this user has been locked out." in error_mess
 
+#kiểm tra gửi đơn thanh toán không điền firstname
 def test_form_checkout_failed_fn(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -58,6 +62,7 @@ def test_form_checkout_failed_fn(driver):
     error=driver.find_element(By.XPATH,"//*[@id='checkout_info_container']/div/form/div[1]/div[4]/h3")
     assert "Error: First Name is required" in error.text
 
+#kiểm tra gửi đơn thanh toán không điền lastname
 def test_form_checkout_failed_ln(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -77,6 +82,7 @@ def test_form_checkout_failed_ln(driver):
     error=driver.find_element(By.XPATH,"//*[@id='checkout_info_container']/div/form/div[1]/div[4]/h3")
     assert "Error: Last Name is required" in error.text
 
+#kiểm tra gửi đơn thanh toán không điền postcode
 def test_form_checkout_failed_pc(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")

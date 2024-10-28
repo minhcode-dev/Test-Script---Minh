@@ -10,6 +10,7 @@ def driver():
     yield driver
     driver.quit()
 
+#kiểm tra thêm sản phẩm vào giỏ hàng
 def test_add_to_cart(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -25,6 +26,7 @@ def test_add_to_cart(driver):
     time.sleep(5)
     assert "1" in q
 
+#kiểm tra thêm nhiều sản phẩm vào giỏ hàng
 def test_add_multi_to_cart(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -41,6 +43,7 @@ def test_add_multi_to_cart(driver):
     q=element.text
     assert "6" in q
 
+#kiểm tra thanh toán thành công
 def test_checkout_successfully(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -67,6 +70,7 @@ def test_checkout_successfully(driver):
     completed=driver.find_element(By.XPATH,"//*[@id='checkout_complete_container']/h2")
     assert "Thank you for your order!" in completed.text
 
+#kiểm tra thanh toán thất bại 
 def test_checkout_failed(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")

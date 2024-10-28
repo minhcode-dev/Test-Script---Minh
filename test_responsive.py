@@ -14,6 +14,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
+#kiểm tra tương thích với trang đăng nhập
 def test_responsive_design_login(driver):
     # Mở trang
     driver.get("https://www.saucedemo.com/")
@@ -26,13 +27,14 @@ def test_responsive_design_login(driver):
         (1366, 768),  # laptop
         (1920, 1080)  # pc
     ]
-    
+    #vòng lập qua chiều dài và cao để đặt cho trang 
     for width, height in screen_sizes:
         driver.set_window_size(width, height)
         time.sleep(2)
-        login_button = driver.find_element(By.XPATH, "//*[@id='root']/div/div[2]")
-        assert login_button.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
+        login = driver.find_element(By.XPATH, "//*[@id='root']/div/div[2]")
+        assert login.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
 
+#kiểm tra tương thích với trang sản phẩm
 def test_responsive_design_products(driver):
     driver.get("https://www.saucedemo.com/")
     screen_sizes = [
