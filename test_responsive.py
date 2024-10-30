@@ -55,3 +55,82 @@ def test_responsive_design_products(driver):
         time.sleep(2)
         products=driver.find_element(By.ID,"inventory_container")
         assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
+
+def test_responsive_design_cart(driver):
+    driver.get("https://www.saucedemo.com/")
+    screen_sizes = [
+        (390, 844),   #iphone 12
+        (430, 932),  #iphone 14 promax
+        (768, 1024),  # tablet
+        (1366, 768),  # laptop
+        (1920, 1080)  # pc
+    ]
+    driver.get("https://www.saucedemo.com/")
+    username=driver.find_element(By.ID,"user-name")
+    username.send_keys("standard_user")
+    password=driver.find_element(By.ID,"password")
+    password.send_keys("secret_sauce")
+    driver.find_element(By.ID,"login-button").click()
+    driver.find_element(By.XPATH,"//*[@id='shopping_cart_container']/a").click()
+    for width, height in screen_sizes:
+        driver.set_window_size(width, height)
+        time.sleep(2)
+        products=driver.find_element(By.ID,"cart_contents_container")
+        assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
+
+def test_responsive_design_cart_inf(driver):
+    driver.get("https://www.saucedemo.com/")
+    screen_sizes = [
+        (390, 844),   #iphone 12
+        (430, 932),  #iphone 14 promax
+        (768, 1024),  # tablet
+        (1366, 768),  # laptop
+        (1920, 1080)  # pc
+    ]
+    driver.get("https://www.saucedemo.com/")
+    username=driver.find_element(By.ID,"user-name")
+    username.send_keys("standard_user")
+    password=driver.find_element(By.ID,"password")
+    password.send_keys("secret_sauce")
+    driver.find_element(By.ID,"login-button").click()
+    driver.find_element(By.XPATH,"//*[@id='shopping_cart_container']/a").click()
+    time.sleep(3)
+    driver.find_element(By.ID,"checkout").click()
+    for width, height in screen_sizes:
+        driver.set_window_size(width, height)
+        time.sleep(2)
+        products=driver.find_element(By.ID,"checkout_info_container")
+        assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
+
+def test_responsive_design_checkout_summary(driver):
+    driver.get("https://www.saucedemo.com/")
+    screen_sizes = [
+        (390, 844),   #iphone 12
+        (430, 932),  #iphone 14 promax
+        (768, 1024),  # tablet
+        (1366, 768),  # laptop
+        (1920, 1080)  # pc
+    ]
+    driver.get("https://www.saucedemo.com/")
+    username=driver.find_element(By.ID,"user-name")
+    username.send_keys("standard_user")
+    password=driver.find_element(By.ID,"password")
+    password.send_keys("secret_sauce")
+    driver.find_element(By.ID,"login-button").click()
+    driver.find_element(By.XPATH,"//*[@id='shopping_cart_container']/a").click()
+    time.sleep(3)
+    driver.find_element(By.ID,"checkout").click()
+    time.sleep(3)
+    firstname=driver.find_element(By.XPATH,"//*[@id='first-name']")
+    firstname.send_keys("ab")
+    lastname=driver.find_element(By.XPATH,"//*[@id='last-name']")
+    lastname.send_keys("cd")
+    postcode=driver.find_element(By.XPATH,"//*[@id='postal-code']")
+    postcode.send_keys("80000")
+    driver.find_element(By.XPATH,"//*[@id='continue']").click()
+    time.sleep(3)
+    for width, height in screen_sizes:
+        driver.set_window_size(width, height)
+        time.sleep(2)
+        products=driver.find_element(By.ID,"checkout_summary_container")
+        assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"

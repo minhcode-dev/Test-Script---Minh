@@ -2,7 +2,7 @@
 
 ## Mô tả:
 đây là các test script dành cho trang web https://www.saucedemo.com/ về việc kiểm tra đăng nhập, thêm sản phẩm vào giỏ hàng, thanh toán, sắp xếp sản phẩm, responsive, tính hợp lệ của dữ liệu.
-tổng cộng 23 hàm cho các chức năng trên 
+tổng cộng 26 hàm cho các chức năng trên 
 ## Yêu cầu: 
 - Python 3.x
 - Trình điều khiển Selenium (ChromeDriver, EdgeDriver, v.v.)
