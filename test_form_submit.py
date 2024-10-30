@@ -10,7 +10,7 @@ def driver():
     yield driver
     driver.quit()
 
-#kiểm tra việc gửi đơn đăng ký
+#kiểm tra việc gửi đơn đăng nhập thành công
 def test_form_submit(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
@@ -22,7 +22,7 @@ def test_form_submit(driver):
     link="https://www.saucedemo.com/inventory.html"
     assert link in driver.current_url
 
-#kiểm tra việc gửi đơn thất bại
+#kiểm tra việc gửi đơn đăng nhập thất bại
 def test_form_submit_failed(driver):
     driver.get("https://www.saucedemo.com/")
     username=driver.find_element(By.ID,"user-name")
