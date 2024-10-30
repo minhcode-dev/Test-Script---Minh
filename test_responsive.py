@@ -56,6 +56,7 @@ def test_responsive_design_products(driver):
         products=driver.find_element(By.ID,"inventory_container")
         assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
 
+#kiểm tra tương thích cho trang giỏ hàng
 def test_responsive_design_cart(driver):
     driver.get("https://www.saucedemo.com/")
     screen_sizes = [
@@ -78,6 +79,7 @@ def test_responsive_design_cart(driver):
         products=driver.find_element(By.ID,"cart_contents_container")
         assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
 
+#kiểm tra tương thích cho trang điền thông tin giỏ hàng
 def test_responsive_design_cart_inf(driver):
     driver.get("https://www.saucedemo.com/")
     screen_sizes = [
@@ -102,6 +104,7 @@ def test_responsive_design_cart_inf(driver):
         products=driver.find_element(By.ID,"checkout_info_container")
         assert products.is_displayed(), f"Nút đăng nhập không hiển thị trên kích thước {width}x{height}"
 
+#kiểm tra tương thích cho trang tổng thanh toán
 def test_responsive_design_checkout_summary(driver):
     driver.get("https://www.saucedemo.com/")
     screen_sizes = [
